@@ -1,0 +1,9 @@
+Num1 = 23
+Num2 = 22
+Num3 = 21
+print("Number before swap",Num1,Num2,Num3)
+temp = Num1
+Num1 = Num2
+Num2 = Num3
+Num3 = temp
+print("Number after swap",Num1,Num2,Num3)
