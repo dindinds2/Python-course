@@ -4,4 +4,5 @@ def circle(r):
     return c
 a = float(input("Enter the radius of circle: "))
 result = circle(a)
-print("The Circumference of circle is",a)
+print("The Circumference of circle is",result)
+
