@@ -1,9 +1,10 @@
-empty_list = []
-print(empty_list)
-number = [12,32,34,56,1]
-print(number)
-triples = [1,2,3] * 3
-print(triples)
-revers = [1,2,3,4,5,6]
-revers = revers[::-1]
-print(revers)
+set = []
+num = int(input("Enter the first number: "))
+num2 = int(input("Enter the second number: "))
+set.append(num**2)
+set.append(num2**2)
+if num%2 == 0 and num2%2 == 0:
+    print("The both number is Even")
+else:
+    print("The both number is odd")
+print(set)
