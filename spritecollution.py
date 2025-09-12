@@ -1,0 +1,44 @@
+import pygame
+import sys
+import random
+
+pygame.init()
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width,screen_height))
+pygame.display.set_caption('Sprite collision game')
+background = pygame.image.load("background.jpg")
+background = pygame.transform.scale(background,(screen_width,screen_height))
+white = (255,255,255)
+font = pygame.font.SysFont(None,55)
+player = pygame.Rect(100,100,50,50)
+enemy = pygame.Rect(600,400,50,50)
+player_color = (0,128,255)
+enemy_color = (225,0,0)
+speed = 5
+def show_message(text):
+    msg = font.render(text,True,(255,255,0))
+    rect = msg.get_rect(center = (screen_width // 2 , screen_height // 2))
+    screen.blit(msg,rect)
+    pygame.display.flip()
+    pygame.time.delay(2000)
+def restart_prompt ():
+    while True:
+        screen.fill(white)
+        show_message("You win!,press Y to restart or N to quit")
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_y:
+                    return True
+                elif event.key == pygame.K_n:
+                    pygame.quit()
+                    sys.exit()
+def game_loop():
+    global player 
+    player = pygame.Rect(100,100,50,50)
+    while True:
+        screen.blit(background,(0,0))
