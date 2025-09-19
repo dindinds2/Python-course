@@ -15,7 +15,7 @@ player = pygame.Rect(100,100,50,50)
 enemy = pygame.Rect(600,400,50,50)
 player_color = (0,128,255)
 enemy_color = (225,0,0)
-speed = 5
+speed = 2
 def show_message(text):
     msg = font.render(text,True,(255,255,0))
     rect = msg.get_rect(center = (screen_width // 2 , screen_height // 2))
@@ -42,3 +42,25 @@ def game_loop():
     player = pygame.Rect(100,100,50,50)
     while True:
         screen.blit(background,(0,0))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            player.x -= speed
+        if keys[pygame.K_RIGHT]:
+            player.x += speed
+        if keys[pygame.K_UP]:
+            player.y -= speed
+        if keys[pygame.K_DOWN]:
+            player.y += speed
+        pygame.draw.rect(screen,player_color,player)
+        pygame.draw.rect(screen,enemy_color,enemy)
+        if player.colliderect(enemy):
+            show_message("YOU WIN")
+            if restart_prompt():
+               game_loop()
+        pygame.display.update()
+game_loop()
+            
